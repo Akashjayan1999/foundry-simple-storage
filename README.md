@@ -21,6 +21,10 @@ https://book.getfoundry.sh/
 $ forge build
 ```
 
+```shell
+$ forge build --zksync
+```
+
 ### Test
 
 ```shell
@@ -44,11 +48,18 @@ $ forge snapshot
 ```shell
 $ anvil
 ```
+```shell
+$ anvil-zksync
+```
 
 ### Deploy
 
 ```shell
 $ forge script script/Counter.s.sol:CounterScript --rpc-url <your_rpc_url> --private-key <your_private_key>
+```
+
+```shell
+$ forge script script/DeploySimpleStorage.s.sol:DeploySimpleStorage --rpc-url [anvil-zksync-urk] --private-key [anvil-zksync-urk] --legacy --zksync --broadcast
 ```
 
 ### Cast
@@ -57,6 +68,28 @@ $ forge script script/Counter.s.sol:CounterScript --rpc-url <your_rpc_url> --pri
 $ cast <subcommand>
 ```
 
+```shell
+forge create SimpleStorage --rpc-url [anvil-zksync-urk] --private-key [key] --legacy --zksync
+```
+
+
+**Call a function:** add --legacy --zksync for zksync
+
+```shell
+$ cast call <contract_address> "retrieve()" --rpc-url <your_rpc_url>
+```
+
+**Send a transaction:** add --legacy --zksync for zksyn
+
+```shell
+$ cast send <contract_address> "store(uint256)" <value> --rpc-url <your_rpc_url> --account <account_name> --from <sender_address>
+```
+
+```shell
+cast --to-base [dec] dec [key] --legacy --zksync
+```
+
+
 ### Help
 
 ```shell
@@ -64,3 +97,4 @@ $ forge --help
 $ anvil --help
 $ cast --help
 ```
+
